@@ -1,0 +1,87 @@
+
+        <!doctype html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <title>404 Templates — Customization Tutorial</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"/>
+          <style>
+            :root{--bg:#0b0d12;--card:rgba(255,255,255,.06);--text:#e6e7eb;--muted:#a2a6b3;--ring:#4f46e5}
+            *{box-sizing:border-box}
+            body{margin:0;background:radial-gradient(1200px 800px at 85% -10%, #1a1e2d, transparent 60%),radial-gradient(900px 700px at -10% 120%, #151824, transparent 60%),#0b0d12;color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial}
+            header{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(16px,3vw,40px)}
+            h1{font-size:clamp(22px,3vw,32px);margin:0}
+            main{max-width:1000px;margin:0 auto;padding:20px clamp(16px,3vw,40px) 48px;display:grid;gap:18px}
+            section{border:1px solid var(--card);border-radius:16px;padding:18px;background:rgba(255,255,255,.04)}
+            code,pre{background:rgba(255,255,255,.08);padding:8px 10px;border-radius:10px}
+            a{color:#c4b5fd}
+          </style>
+        </head>
+        <body>
+          <header>
+            <h1>404 Templates — Customization Tutorial</h1>
+            <nav><a href="index.html" style="color:var(--text);text-decoration:none;border:1px solid var(--card);padding:8px 12px;border-radius:10px">Back to Gallery</a></nav>
+          </header>
+          <main>
+            <section>
+              <h2>Folder structure</h2>
+              <p>Each template folder contains exactly three files:</p>
+              <ul>
+                <li><strong>index.html</strong> — markup with inline SVG logo and favicon (data URI)</li>
+                <li><strong>style.css</strong> — all styles and background animations</li>
+                <li><strong>script.js</strong> — countdown controls and interactions</li>
+              </ul>
+            </section>
+            <section>
+              <h2>Change logo (inline SVG)</h2>
+              <p>Open <code>index.html</code> and find the <code>&lt;svg class="logo-svg" ...&gt;</code>. Replace the text elements or shapes. You can paste your own SVG; keep width/height reasonable (e.g., height ≈ 44px).</p>
+              <p>To edit brand text, update the <code>brand</code> text inside the SVG group.</p>
+            </section>
+            <section>
+              <h2>Use a custom favicon (SVG)</h2>
+              <p>Find the favicon link in <code>&lt;head&gt;</code>:</p>
+              <pre>&lt;link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,&lt;svg ...&gt;...&lt;/svg&gt;" /&gt;</pre>
+              <p>Replace the inline SVG or point to an external <code>favicon.svg</code> file:</p>
+              <pre>&lt;link rel="icon" type="image/svg+xml" href="favicon.svg" /&gt;</pre>
+            </section>
+            <section>
+              <h2>Change colors & background</h2>
+              <p>In <code>style.css</code>, adjust the CSS variables under <code>:root</code>:</p>
+              <pre>:root {
+  --primary: #7F00FF;
+  --accent: #E100FF;
+  --bg: #0b0d12;
+}</pre>
+              <p>For background animations, tweak the <code>.decor</code> rules per variant class on the <code>&lt;body&gt;</code>.</p>
+            </section>
+            <section>
+              <h2>Change title, paragraph, icons</h2>
+              <p>Edit the <code>.title</code> and <code>.tagline</code> in <code>index.html</code>. Icons come from CDN (Boxicons and Remix Icon). Swap classes like <code>bx bx-time-five</code> or <code>ri-home-5-line</code> to change icons.</p>
+            </section>
+            <section>
+              <h2>Countdown counter</h2>
+              <p>In <code>script.js</code>:</p>
+              <ul>
+                <li><strong>Change duration</strong>: set <code>let seconds = 10;</code> to your preferred number.</li>
+                <li><strong>Reset</strong>: the <code>reset()</code> function sets it back to 10. Modify there.</li>
+                <li><strong>Redirect</strong>: uncomment <code>location.href = '/'</code> and change the path.</li>
+              </ul>
+            </section>
+            <section>
+              <h2>Reset styles quickly</h2>
+              <p>Delete or adjust any variant class on <code>&lt;body class="variant-..."&gt;</code> to switch background styling.</p>
+            </section>
+            <section>
+              <h2>Performance tips</h2>
+              <ul>
+                <li>Prefer SVGs over heavy images.</li>
+                <li>Keep gradients and blurs reasonable for low-end devices.</li>
+                <li>Host icon CSS on your own CDN for production if needed.</li>
+              </ul>
+            </section>
+          </main>
+        </body>
+        </html>
